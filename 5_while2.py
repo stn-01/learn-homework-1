@@ -12,16 +12,34 @@
 
     Пользователь: Что делаешь?
     Программа: Программирую
-    
+
 """
+import datetime
 
-questions_and_answers = {}
+questions_and_answers = {
+    'привет': 'Привет!',
+    'как дела': 'Хорошо!',
+    'что делаешь': 'Ничего.',
+    'пока': 'Пока!',
+}
 
-def ask_user(answers_dict):
-    """
-    Замените pass на ваш код
-    """
-    pass
-    
+def ask_user(questions_and_answers):
+    characters_to_remove = '!?.,'
+
+    while True:
+        question = input('Вопрос: ')
+        question_handled = ''
+
+        for i in question.strip().lower():
+            if i not in characters_to_remove:
+                question_handled += i
+
+        if question_handled == 'пока':
+            print(f'Ответ: {questions_and_answers[question_handled]}')
+            break
+
+        print(f'Ответ: {questions_and_answers[question_handled]}')
+
+
 if __name__ == "__main__":
     ask_user(questions_and_answers)
